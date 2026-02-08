@@ -1,0 +1,67 @@
+name: Test
+
+on:
+  workflow_call:
+    inputs:
+      python-version:
+        required: false
+        type: string
+        default: '3.11'
+      postgres:
+        required: false
+        type: boolean
+        default: false
+      postgres-image:
+        required: false
+        type: string
+        default: 'pgvector/pgvector:pg16'
+      test-markers:
+        required: false
+        type: string
+        default: 'not integration and not slow'
+      coverage-threshold:
+        required: false
+        type: string
+        default: '0'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: ${{ inputs.postgres && inputs.postgres-image || '' }}
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ inputs.python-version }}
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install dependencies
+        run: uv pip install --system -e ".[dev]"
+
+      - name: Run tests
+        run: |
+          pytest tests/ \
+            -m "${{ inputs.test-markers }}" \
+            -v \
+            --cov \
+            --cov-report=term-missing \
+            --cov-fail-under=${{ inputs.coverage-threshold }} \
+            --tb=short
+        env:
+          DATABASE_URL: ${{ inputs.postgres && 'postgresql://test:test@localhost:5432/test' || '' }}

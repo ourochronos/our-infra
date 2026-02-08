@@ -41,7 +41,9 @@ echo ""
 
 # Create GitHub repo
 echo "Creating GitHub repo orobobos/$PROJECT_NAME..."
-gh repo create "orobobos/$PROJECT_NAME" --public --description "$DESCRIPTION" --clone --clone-dir "$TARGET_DIR"
+PARENT_DIR="$(dirname "$TARGET_DIR")"
+cd "$PARENT_DIR"
+gh repo create "orobobos/$PROJECT_NAME" --public --description "$DESCRIPTION" --clone
 
 # Copy template files (non-directory)
 echo "Applying brick template..."
@@ -96,6 +98,7 @@ git commit -m "Initial brick scaffold from oro-infra template
 
 Project: $PROJECT_NAME
 Package: $PACKAGE_NAME"
+git branch -m master main 2>/dev/null || true
 git push -u origin main
 
 echo ""
