@@ -20,9 +20,9 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
 ]
 dependencies = [
-    # Pin oro-* bricks to major version ranges:
-    # "oro-db>=1.0,<2.0",
-    # "oro-beliefs>=1.0,<2.0",
+    # Pin our-* bricks to major version ranges:
+    # "our-db>=1.0,<2.0",
+    # "our-beliefs>=1.0,<2.0",
 ]
 
 [project.optional-dependencies]

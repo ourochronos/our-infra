@@ -8,7 +8,7 @@ Every brick defines its public API through:
 2. **`__init__.py`** — Re-exports of the public API
 
 ```python
-# src/oro_db/interface.py
+# src/our_db/interface.py
 from abc import ABC, abstractmethod
 
 class Store(ABC):
@@ -22,9 +22,9 @@ class Store(ABC):
 ```
 
 ```python
-# src/oro_db/__init__.py
-from oro_db.interface import Store
-from oro_db.postgres import PostgresStore
+# src/our_db/__init__.py
+from our_db.interface import Store
+from our_db.postgres import PostgresStore
 
 __all__ = ["Store", "PostgresStore"]
 ```
@@ -69,7 +69,7 @@ class Store(ABC): ...
 ```python
 # postgres.py — implementation imports what it needs
 import asyncpg
-from oro_db.interface import Store
+from our_db.interface import Store
 
 class PostgresStore(Store): ...
 ```
@@ -87,9 +87,9 @@ When an interface needs to change:
 Bricks may depend on other bricks' interfaces:
 
 ```toml
-# oro-beliefs/pyproject.toml
+# our-beliefs/pyproject.toml
 dependencies = [
-    "oro-db>=1.0,<2.0",
+    "our-db>=1.0,<2.0",
 ]
 ```
 

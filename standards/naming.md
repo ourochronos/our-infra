@@ -4,7 +4,7 @@
 
 | Scope | Convention | Example |
 |-------|-----------|---------|
-| Brick repos | `oro-<name>` | `oro-db`, `oro-beliefs`, `oro-infra` |
+| Brick repos | `our-<name>` | `our-db`, `our-beliefs`, `our-infra` |
 | Composed project repos | No prefix | `valence`, `bob` |
 
 Bricks are small, focused, reusable components. Composed projects combine bricks into deployable systems.
@@ -12,13 +12,13 @@ Bricks are small, focused, reusable components. Composed projects combine bricks
 ## Python Packages
 
 - Package name = underscore version of repo name
-- `oro-db` → `oro_db`
-- `oro-beliefs` → `oro_beliefs`
+- `our-db` → `our_db`
+- `our-beliefs` → `our_beliefs`
 
 ## Internal Modules
 
 - Use `package.module` structure
-- `oro_db.connection`, `oro_beliefs.store`
+- `our_db.connection`, `our_beliefs.store`
 - Keep modules focused — one clear responsibility each
 
 ## Interfaces and Implementations
@@ -34,10 +34,10 @@ Interfaces live in the brick's top-level or `interface.py`. Implementations live
 
 ```python
 # Public API — import from package root
-from oro_db import Store, PostgresStore
+from our_db import Store, PostgresStore
 
 # Internal — import from module
-from oro_db.connection import ConnectionPool
+from our_db.connection import ConnectionPool
 ```
 
 ## File Naming

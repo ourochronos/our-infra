@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Check a repo against oro-infra conventions.
+# Check a repo against our-infra conventions.
 #
 # Usage: check-conventions.sh [path]
 # Defaults to current directory.

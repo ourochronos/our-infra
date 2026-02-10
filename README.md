@@ -1,4 +1,4 @@
-# oro-infra
+# our-infra
 
 Infrastructure and conventions for ourochronos bricks.
 
@@ -14,7 +14,7 @@ This repo is the source of truth for how ourochronos projects are structured, bu
 ### Create a new brick
 
 ```bash
-./scripts/new-brick.sh oro-mypackage "Description of what it does"
+./scripts/new-brick.sh our-mypackage "Description of what it does"
 ```
 
 This creates a GitHub repo, applies the brick template, and pushes the initial commit.
@@ -22,13 +22,13 @@ This creates a GitHub repo, applies the brick template, and pushes the initial c
 ### Check a repo against conventions
 
 ```bash
-./scripts/check-conventions.sh ~/projects/oro-mypackage
+./scripts/check-conventions.sh ~/projects/our-mypackage
 ```
 
 ## Structure
 
 ```
-oro-infra/
+our-infra/
 ├── standards/           # Convention documentation
 │   ├── naming.md        # Repo, package, module naming rules
 │   ├── versioning.md    # Semver, changelog, deprecation policy
@@ -36,7 +36,7 @@ oro-infra/
 │   ├── testing.md       # Test ownership, markers, coverage
 │   └── state-ownership.md # One owner per shared resource
 ├── templates/
-│   ├── brick/           # Template for oro-* repos
+│   ├── brick/           # Template for our-* repos
 │   └── composed/        # Template for composed projects
 ├── workflows/           # Reusable GitHub Actions
 │   ├── lint.yml         # Linting workflow (ruff + mypy)
@@ -51,9 +51,9 @@ oro-infra/
 
 | Scope | Convention | Example |
 |-------|-----------|---------|
-| Brick repos | `oro-<name>` | `oro-db`, `oro-beliefs` |
+| Brick repos | `our-<name>` | `our-db`, `our-beliefs` |
 | Composed projects | No prefix | `valence`, `bob` |
-| Python packages | Underscore of repo name | `oro_db` |
+| Python packages | Underscore of repo name | `our_db` |
 | Interfaces | Clean nouns | `Store`, `Client` |
 | Implementations | Descriptive | `PostgresStore` |
 | Versions | Semver with `v` prefix | `v1.2.3` |

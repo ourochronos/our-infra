@@ -4,7 +4,7 @@
 
 | Project type | Primary test focus | Secondary |
 |-------------|-------------------|-----------|
-| Bricks (`oro-*`) | Unit tests | Narrow integration tests for their own dependencies |
+| Bricks (`our-*`) | Unit tests | Narrow integration tests for their own dependencies |
 | Composed projects | Integration tests | End-to-end tests |
 
 Bricks test their own logic thoroughly. Composed projects test that bricks work together correctly.

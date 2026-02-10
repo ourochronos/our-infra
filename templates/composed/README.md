@@ -10,7 +10,7 @@ _Brief description of what this project does and what bricks it composes._
 
 This project composes the following ourochronos bricks:
 
-- `oro-*` — _description_
+- `our-*` — _description_
 
 ## Install
 

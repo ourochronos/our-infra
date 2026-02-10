@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Scaffold a new oro-* brick from the template.
+# Scaffold a new our-* brick from the template.
 #
 # Usage: new-brick.sh <brick-name> [description]
-# Example: new-brick.sh oro-db "Database connectivity brick"
+# Example: new-brick.sh our-db "Database connectivity brick"
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 INFRA_DIR="$(dirname "$SCRIPT_DIR")"
@@ -12,7 +12,7 @@ TEMPLATE_DIR="$INFRA_DIR/templates/brick"
 
 if [ $# -lt 1 ]; then
     echo "Usage: $0 <brick-name> [description]"
-    echo "Example: $0 oro-db \"Database connectivity brick\""
+    echo "Example: $0 our-db \"Database connectivity brick\""
     exit 1
 fi
 
@@ -21,8 +21,8 @@ DESCRIPTION="${2:-An ourochronos brick}"
 PACKAGE_NAME="${PROJECT_NAME//-/_}"
 
 # Validate naming
-if [[ ! "$PROJECT_NAME" =~ ^oro- ]]; then
-    echo "ERROR: Brick repos must be named oro-<name>"
+if [[ ! "$PROJECT_NAME" =~ ^our- ]]; then
+    echo "ERROR: Brick repos must be named our-<name>"
     exit 1
 fi
 
@@ -94,7 +94,7 @@ done
 # Initial commit
 cd "$TARGET_DIR"
 git add -A
-git commit -m "Initial brick scaffold from oro-infra template
+git commit -m "Initial brick scaffold from our-infra template
 
 Project: $PROJECT_NAME
 Package: $PACKAGE_NAME"

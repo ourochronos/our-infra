@@ -15,13 +15,13 @@
 
 ### 1. The owner defines the schema
 
-If `oro-db` owns connection pooling, only `oro-db` creates and manages connection pools. If `oro-beliefs` owns the beliefs table, only `oro-beliefs` runs migrations on it.
+If `our-db` owns connection pooling, only `our-db` creates and manages connection pools. If `our-beliefs` owns the beliefs table, only `our-beliefs` runs migrations on it.
 
 ### 2. Consumers use the interface
 
 ```python
 # Good — go through the interface
-from oro_beliefs import BeliefStore
+from our_beliefs import BeliefStore
 beliefs = await store.query("some topic")
 
 # Bad — reach into another brick's internals
