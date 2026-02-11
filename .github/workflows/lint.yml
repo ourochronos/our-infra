@@ -7,6 +7,11 @@ on:
         required: false
         type: string
         default: '3.11'
+      extra-install:
+        description: 'Additional packages to install before the main package (e.g. git deps)'
+        required: false
+        type: string
+        default: ''
 
 jobs:
   lint:
@@ -20,6 +25,10 @@ jobs:
 
       - name: Install uv
         uses: astral-sh/setup-uv@v3
+
+      - name: Install extra dependencies
+        if: inputs.extra-install != ''
+        run: uv pip install --system ${{ inputs.extra-install }}
 
       - name: Install dependencies
         run: uv pip install --system -e ".[dev]"
